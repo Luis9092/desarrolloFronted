@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%include '/components/header.html'%}
+    <title>Productos</title>
+  </head>
+  <body>
+    <!-- CONTENT -->
+    {% include '/components/menu.html' %}
+
+    <section id="content">
+      <!-- NAVBAR -->
+      {% include '/components/perfil.html' %}
+
+      <main>
+        {% include '/components/formularioProductos.html' %}
+
+        <div class="head-title">
+          <div class="left">
+            <h1>Generales</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a href="#">Generales</a>
+              </li>
+              <li><i class="bx bx-chevron-right"></i></li>
+              <li>
+                <a class="active" href="#">Productos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {% set total_items = tableProductos | length%}
+
+        <ul class="box-info">
+          <li>
+            <i class="bx bxs-calendar-check"></i>
+            <span class="text">
+              <h3>{{ total_items }}</h3>
+              <p class="colorGreen">Total Productos</p>
+            </span>
+          </li>
+          <li>
+            {% set total = 0 %} {% for item in tableProductos %} {% set total =
+            total + item.cantidad %} {% endfor %}
+            <i class="bx bxs-group"></i>
+            <span class="text">
+              <h3>{{total}}</h3>
+              <p class="colorRed">Productos Almacenados</p>
+            </span>
+          </li>
+          <li>
+            <i class="bx bxs-dollar-circle"></i>
+            <span class="text">
+              <h3>$2543</h3>
+              <p class="colorBlue">Total Ganancia</p>
+            </span>
+          </li>
+        </ul>
+ 
+        <div class="tablePrincipal">
+          <div class="header">
+            <h1><i class="fas fa-list"></i> Productos agregadas</h1>
+          </div>
+          <table id="tableProductos" class="display row-border">
+            <thead>
+              <tr>
+                <th style="display: none">id</th>
+                <th style="display: none">desc</th>
+                <th style="display: none">idcat</th>
+                <th>No</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Precio Venta</th>
+                <th>imagen</th>
+                <th>Fecha Creacion</th>
+                <th style="display: none">paht</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for tb in tableProductos %}
+              <tr>
+                <td style="display: none">{{ tb.idproducto }}</td>
+                <td style="display: none">{{ tb.descripcion }}</td>
+                <td style="display: none">{{ tb.idcategoria}}</td>
+                <td>{{ loop.index }}</td>
+                <td>{{ tb.nombre }}</td>
+                <td>{{ tb.precioventa }}</td>
+                <td>{{ tb.cantidad }}</td>
+                <td>{{ tb.precioventa }}</td>
+                <td class="image-cell">
+                  <img
+                    src="{{tb.imagen}}"
+                    alt="Imagen Producto"
+                    class="thumbnail"
+                  />
+                </td>
+                <td>{{tb.fechacreacion }}</td>
+                <td style="display: none">{{tb.imagen }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </section>
+    <!-- <script>
+      const txtProveedor2 = document.querySelector("#txtProveedor");
+      const txtcategoria2 = document.querySelector("#txtcategoria");
+
+      async function DinamicSelect(entrada, url, id, valor) {
+        entrada.innerHTML = "";
+        await axios
+          .get(url)
+          .then(function (response) {
+            if (response.data && Array.isArray(response.data)) {
+              response.data.forEach((item) => {
+                const option = document.createElement("option");
+                option.value = item[id];
+                option.textContent = item[valor];
+                entrada.appendChild(option);
+              });
+            } else {
+              console.error("La respuesta no contiene datos válidos.");
+            }
+          })
+          .catch(function (error) {
+            console.error("Error al obtener los datos:", error);
+          });
+      }
+
+      async function pintar() {
+        await DinamicSelect(
+          txtProveedor2,
+          "http://127.0.0.1:8000/verProveedores",
+          "id",
+          "nombre"
+        );
+
+       
+      }
+      pintar();
+    </script> -->
+    {%include '/components/footer.html' %}
+  </body>
+</html>
