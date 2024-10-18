@@ -5,8 +5,8 @@
   --primary-color: #ad6b00;
   --secondary-color: #deca15;
   --error-color: rgb(255, 0, 85);
-  --light-blue: #cffffe;
-  --grey: #ebf5ff;
+  --light-blue: #fff0cf;
+  --grey: #fffbf5;
   --dark-grey: #4c4c4c;
   --green: rgb(0, 233, 78);
   --light-green: #b5ffd7;
@@ -20,8 +20,8 @@
   --bg-color: #f1f1f1;
   --text-color: #000000;
   --sidebar-bg: #ffffff;
-  --hover-color: rgba(160, 255, 236, 0.959);
-  --primaryColor: #1bede6;
+  --hover-color: rgba(255, 215, 160, 0.959);
+  --primaryColor: #eda31b;
   --morado-color: #e41bff;
   --celeste-color: #29caff;
   --rojizo-color: #ff266e;

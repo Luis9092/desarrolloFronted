@@ -30,7 +30,6 @@
           </div>
         </div>
         {% set total_items = tableProductos | length%}
-
         <ul class="box-info">
           <li>
             <i class="bx bxs-calendar-check"></i>
@@ -56,10 +55,12 @@
             </span>
           </li>
         </ul>
- 
+
         <div class="tablePrincipal">
+          <button id="btnAgregarProductos" class="btn">Agregar</button>
+
           <div class="header">
-            <h1><i class="fas fa-list"></i> Productos agregadas</h1>
+            <h1><i class="fas fa-list"></i> Productos Administracion</h1>
           </div>
           <table id="tableProductos" class="display row-border">
             <thead>
@@ -75,28 +76,30 @@
                 <th>imagen</th>
                 <th>Fecha Creacion</th>
                 <th style="display: none">paht</th>
+                <th style="display: none">idprov</th>
               </tr>
             </thead>
             <tbody>
               {% for tb in tableProductos %}
               <tr>
-                <td style="display: none">{{ tb.idproducto }}</td>
+                <td style="display: none">{{ tb.id }}</td>
                 <td style="display: none">{{ tb.descripcion }}</td>
                 <td style="display: none">{{ tb.idcategoria}}</td>
                 <td>{{ loop.index }}</td>
                 <td>{{ tb.nombre }}</td>
-                <td>{{ tb.precioventa }}</td>
+                <td>{{ tb.preciocompra }}</td>
                 <td>{{ tb.cantidad }}</td>
                 <td>{{ tb.precioventa }}</td>
                 <td class="image-cell">
                   <img
-                    src="{{tb.imagen}}"
+                    src="/static/servidorImg/{{tb.imagen}}"
                     alt="Imagen Producto"
                     class="thumbnail"
                   />
                 </td>
                 <td>{{tb.fechacreacion }}</td>
                 <td style="display: none">{{tb.imagen }}</td>
+                <td style="display: none">{{tb.idproveedor }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -104,7 +107,7 @@
         </div>
       </main>
     </section>
-    <!-- <script>
+    <script>
       const txtProveedor2 = document.querySelector("#txtProveedor");
       const txtcategoria2 = document.querySelector("#txtcategoria");
 
@@ -132,15 +135,20 @@
       async function pintar() {
         await DinamicSelect(
           txtProveedor2,
-          "http://127.0.0.1:8000/verProveedores",
+          "http://127.0.0.1:8000/verproveedores",
           "id",
           "nombre"
         );
 
-       
+        await DinamicSelect(
+          txtcategoria2,
+          "http://127.0.0.1:8000/vercategoria",
+          "id",
+          "nombre"
+        );
       }
       pintar();
-    </script> -->
+    </script>
     {%include '/components/footer.html' %}
   </body>
 </html>

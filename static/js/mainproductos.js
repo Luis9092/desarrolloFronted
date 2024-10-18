@@ -206,21 +206,22 @@ $("#tableProductos").on("click", "tr td", function (evt) {
     target = $(event.target);
     id = target.parent("tr").find("td").eq(0).html();
     descripcion = target.parent("tr").find("td").eq(1).html();
-    idProveedor = target.parent("tr").find("td").eq(2).html();
-    idcategoria = target.parent("tr").find("td").eq(3).html();
+    idcategoria = target.parent("tr").find("td").eq(2).html();
 
-    nombre = target.parent("tr").find("td").eq(5).html();
-    precio = target.parent("tr").find("td").eq(6).html();
-    cantidad = target.parent("tr").find("td").eq(7).html();
-    precioVenta = target.parent("tr").find("td").eq(8).html();
-    fechaIngreso = target.parent("tr").find("td").eq(10).html();
-    imagen = target.parent("tr").find("td").eq(11).html();
+    nombre = target.parent("tr").find("td").eq(4).html();
+    precio = target.parent("tr").find("td").eq(5).html();
+
+    cantidad = target.parent("tr").find("td").eq(6).html();
+    precioVenta = target.parent("tr").find("td").eq(7).html();
+    fechaIngreso = target.parent("tr").find("td").eq(9).html();
+    imagen = target.parent("tr").find("td").eq(10).html();
+    idProveedor = target.parent("tr").find("td").eq(11).html();
 
     nombreproducto.value = nombre;
     hideFecha.style.display = "block";
     txtprecio.value = precio; txtProveedor.value = idProveedor; txtcategoria.value = idcategoria; txtdescripcion.value = descripcion;
     txtfecha.value = fechaIngreso;
-    verImagen.src = imagen;
+    verImagen.src = "/static/servidorImg/" + imagen;
     txtexistencia.value = cantidad;
     txtid.value = id;
     txtnameAnterior.value = imagen;
@@ -239,7 +240,7 @@ function limpiarForm() {
     txtcategoria.value = 1;
     txtdescripcion.value = "";
     txtexistencia.value = 0;
-    verImagen.src = "/static/img/ventasimagen.jpg";
+    verImagen.src = "/static/servidorImg/calzado2.jpg";
     btnEliminarProducto.style.display = "none";
     btnActualizarProducto.style.display = "none";
     btnenviardProducto.style.display = "block";

@@ -90,6 +90,10 @@
 }
 
 .seccionproductos .featured-slider .box .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: var(--light);
   margin-bottom: 1.5rem;
 }
@@ -148,14 +152,17 @@
 }
 
 .seccionproductos .btncomprar {
+ 
+  width: 80%;
+
   background-image: linear-gradient(
     to right,
     #ffb31b 0%,
     #8f5d00 48%,
     #ffd11b 100%
   );
-  margin: 10px;
   padding: 15px 1px;
+  margin: 14px 0;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;

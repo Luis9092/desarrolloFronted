@@ -1,0 +1,147 @@
+<div
+  class="containerbtncarrito"
+  style="
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div style="width: 30%">
+    <button type="button" class="btn" id="btnCarrito" name="btnCarrito">
+      <i style="margin-right: 1rem" class="bx bx-cart-add bx-fade-right"></i>
+      Carrito
+    </button>
+  </div>
+</div>
+
+<dialog id="modalCarrito">
+  <div class="container">
+    <div class="info-container" id="InfoCont">
+      <br />
+
+      <div class="containerProductoform">
+        <div id="btn_cancelarcarrito" class="btn_cancelar">
+          <i class="bx bx-x"></i>
+        </div>
+        <h2>Productos Agregados</h2>
+        <form
+          method="POST"
+          action="/productosOperaciones"
+          id="formProducto"
+          enctype="multipart/form-data"
+        >
+        <input type="hidden" id="iduser" name="iduser" value="{{session['id']}}">
+          <div class="row2">
+            <div class="form-group">
+              <label for="nombre">Nombre Cliente</label>
+              <input
+                type="text"
+                id="txtnombreCliente"
+                name="txtnombreCliente"
+                value="{{session['nombres']}}"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="">Nit</label>
+              <input
+                type="text"
+                id="txtnitCliente"
+                name="txtnitCliente"
+                required
+                value="{{session['nit']}}"
+              />
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="form-group">
+              <label for="">Direccion</label>
+              <input
+                type="text"
+                id="txtdireccioncli"
+                name="txtdireccioncli"
+                required
+                value="{{session['direccion']}}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Correo</label>
+              <input
+                type="text"
+                id="txtcorreoCliente"
+                name="txtcorreoCliente"
+                value="{{session['correo']}}"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="tablePrincipal divtablecarrito">
+            <table id="tablecarrito" class="display row-border">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>id</th>
+                  <th>Producto</th>
+                  <th>Descripcion</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>
+                  <th>Imagen</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+
+            <div
+              class="divtotal"
+              style="
+                width: 100%;
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+              "
+            >
+              <label for="total">Total:</label>
+              <input
+                style="border: 1px solid gray; border-radius: 4px; padding: 6px"
+                type="text"
+                id="txttotal"
+                name="txttotal"
+                disabled
+              />
+            </div>
+          </div>
+
+          <div class="form-groupbtn">
+            <button
+              type="button"
+              class="btn"
+              name="btnrealizarPedido"
+              value="agregar"
+              id="btnrealizarPedido"
+            >
+              Realizar Pedido
+            </button>
+
+            <button
+              type="button"
+              class="btn"
+              name="btncancerlaPedido"
+              value="agregar"
+              id="btncancerlaPedido"
+            >
+              Cancelar Pedido
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</dialog>

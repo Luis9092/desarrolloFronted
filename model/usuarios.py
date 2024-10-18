@@ -18,8 +18,10 @@ class Usuarios:
 
             session["correo"] = per["correo"]
             session["id"] = per["id"]
-            session["nombres"] = per["nombres"] +" " +per["apellidos"]
+            session["nombres"] = per["nombres"] + " " + per["apellidos"]
             session["menu"] = per["menu"]
+            session["nit"] = per["nit"]
+            session["direccion"] = per["direccion"]
             return 1
         else:
             return 0

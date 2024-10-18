@@ -1,6 +1,7 @@
 import requests
 import json
 
+
 class Producto:
     def __init__(self) -> None:
         pass
@@ -16,6 +17,7 @@ class Producto:
         preciocompra,
         precioventa,
         fechacreacion,
+        idproveedor,
     ):
         self.idproducto = idproducto
         self.nombre = nombre
@@ -26,21 +28,21 @@ class Producto:
         self.preciocompra = preciocompra
         self.precioventa = precioventa
         self.fechacreacion = fechacreacion
+        self.idproveedor = idproveedor
 
     def agregarProducto(self):
         url = "http://127.0.0.1:8000/crearProducto"
         data = {
-            {
-                "id": 0,
-                "nombre": self.nombre,
-                "descripcion": self.descripcion,
-                "imagen": self.imagen,
-                "idcategoria": self.idcategoria,
-                "cantidad": self.cantidad,
-                "preciocompra": self.preciocompra,
-                "precioventa": 0,
-                "fechacreacion": "",
-            }
+            "id": 0,
+            "nombre": self.nombre,
+            "descripcion": self.descripcion,
+            "imagen": self.imagen,
+            "idcategoria": self.idcategoria,
+            "cantidad": self.cantidad,
+            "preciocompra": self.preciocompra,
+            "precioventa": 0,
+            "fechacreacion": "",
+            "idproveedor": self.idproveedor,
         }
         respuesta = {
             "mensaje": "Error al agregar producto.",
@@ -55,7 +57,8 @@ class Producto:
                     "estado": 1,
                 }
                 return respuesta
-
+            else:
+                return respuesta
         except Exception as e:
             print(f"Ocurrió un error: {e}")
             return respuesta
@@ -63,15 +66,16 @@ class Producto:
     def modificarPrpoducto(self):
         url = "http://127.0.0.1:8000/modificarProducto"
         data = {
-               "id": self.idproducto,
-                "nombre": self.nombre,
-                "descripcion": self.descripcion,
-                "imagen": self.imagen,
-                "idcategoria": self.idcategoria,
-                "cantidad": self.cantidad,
-                "preciocompra": self.preciocompra,
-                "precioventa": 0,
-                "fechacreacion": "",
+            "id": self.idproducto,
+            "nombre": self.nombre,
+            "descripcion": self.descripcion,
+            "imagen": self.imagen,
+            "idcategoria": self.idcategoria,
+            "cantidad": self.cantidad,
+            "preciocompra": self.preciocompra,
+            "precioventa": 0,
+            "fechacreacion": "",
+            "idproveedor": self.idproveedor,
         }
         respuesta = {
             "mensaje": "Error al modificar producto.",
@@ -92,7 +96,7 @@ class Producto:
             return respuesta
 
     def eliminarProducto(self):
-        url = "http://127.0.0.1:8000/eliminarProducto/<id>"
+        url = "http://127.0.0.1:8000/eliminarProducto"
         urlfinal = f"{url}/{self.idproducto}"
         respuesta = {
             "mensaje": "Error al eliminar el producto.",
