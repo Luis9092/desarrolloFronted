@@ -8,6 +8,7 @@ import json
 
 from model.usuarios import Usuarios
 from model.productos import Producto
+from model.cliente import Cliente
 from datetime import datetime
 
 
@@ -159,6 +160,108 @@ def operacionesProducto(accion):
             os.remove("static/servidorImg/" + txtnameAnterior)
         retorno = pr.eliminarProducto()
         return json.dumps(retorno)
+
+    # CLIENTES
+
+
+@app.route("/clientes")
+def clientes():
+    per = session.get("menu")
+    if "menu" not in session or not session["menu"]:
+        return redirect(url_for("root"))
+
+    url = "http://127.0.0.1:8000/verClientes/<id>"
+
+    response = requests.get(url, params={"id": 1})
+
+    if response.status_code == 200:
+        tableClientes = response.json()
+
+        return render_template(
+            "clientes.html",
+            tableClientes=tableClientes,
+            per=per,
+        )
+
+    return render_template(
+        "clientes.html",
+        tableClientes=[],
+        per=per,
+    )
+
+
+@app.route("/clienteOperaciones/<string:accion>", methods=["POST"])
+def clientesOperacions(accion):
+    operacion = accion
+    txtidcc = request.form["txtidcc"]
+    txtnombresc = request.form["txtnombresc"]
+    txtapellidosc = request.form["txtapellidosc"]
+    txtnitc = request.form["txtnitc"]
+    txtdireccionc = request.form["txtdireccionc"]
+    c = Cliente()
+
+    c.constructorCliente(txtidcc, txtnombresc, txtapellidosc, txtnitc, txtdireccionc)
+
+    if operacion == "actualizar":
+        retorno = c.acualizarCliente()
+        return json.dumps(retorno)
+
+    if operacion == "eliminar":
+        retorno = c.eliminarCliente()
+        return json.dumps(retorno)
+
+
+@app.route("/gestionPedidos")
+def gestionPedidos():
+    per = session.get("menu")
+    if "menu" not in session or not session["menu"]:
+        return redirect(url_for("root"))
+
+    url = "http://127.0.0.1:8000/verPedidos"
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        tablePedido = response.json()
+
+        return render_template(
+            "gestionarPedidos.html",
+            tablePedido=tablePedido,
+            per=per,
+        )
+
+    return render_template(
+        "gestionarPedidos.html",
+        tablePedido=[],
+        per=per,
+    )
+
+
+@app.route("/mispedidos")
+def verMispedidos():
+    per = session.get("menu")
+    id = session.get("id")
+    if "menu" not in session or not session["menu"]:
+        return redirect(url_for("root"))
+
+    url = "http://127.0.0.1:8000/verPedidosporusuario/<id>"
+
+    response = requests.get(url, params={"id": id})
+
+    if response.status_code == 200:
+        tablePedido = response.json()
+
+        return render_template(
+            "mispedidos.html",
+            tablePedido=tablePedido,
+            per=per,
+        )
+
+    return render_template(
+        "mispedidos.html",
+        tablePedido=[],
+        per=per,
+    )
 
 
 if __name__ == "__main__":

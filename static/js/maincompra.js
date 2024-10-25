@@ -41,6 +41,7 @@ if (btnCarrito) {
         modalCarrito.showModal();
         ListarProductos();
 
+
     });
 }
 
@@ -72,10 +73,13 @@ async function ObtenerProducto(id) {
     }
 }
 
-txtcantidadcompra.addEventListener("change", function () {
-    let sub = txtcantidadcompra.value * txtpreciocompra.value;
-    txtsubtotal.value = sub;
-});
+if (txtcantidadcompra) {
+    txtcantidadcompra.addEventListener("change", function () {
+        let sub = txtcantidadcompra.value * txtpreciocompra.value;
+        txtsubtotal.value = sub;
+    });
+}
+
 
 let dataCarrito = localStorage.getItem("dataCarrito"); //Obtener datos de localStorage
 dataCarrito = JSON.parse(dataCarrito);
@@ -111,6 +115,10 @@ function AgregarCarrito() {
     localStorage.setItem("dataCarrito", JSON.stringify(dataCarrito));
     return 1;
 }
+
+
+
+
 let tabla = $("#tablecarrito").DataTable({
     language: {
         url: "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json",
@@ -121,8 +129,6 @@ let tabla = $("#tablecarrito").DataTable({
 });
 
 function ListarProductos() {
-    // Inicializa la tabla
-    // Limpia la tabla antes de agregar nuevos datos
     tabla.clear();
     let total = 0;
     let contador = 0;
@@ -145,12 +151,8 @@ function ListarProductos() {
 
     txttotal.value = total;
 
-    console.log(total);
-
-    // Dibuja la tabla con los nuevos datos
     tabla.draw();
-
-    ocultarColumna(7)
+    ocultarColumna(7);
 
 }
 
@@ -302,12 +304,6 @@ function mostrartotal() {
 function ocultarColumna(index) {
     const tabla = document.getElementById("tablecarrito");
 
-    // Ocultar encabezado
-    const encabezado = tabla.getElementsByTagName("th")[index];
-    if (encabezado) {
-        encabezado.style.display = "none";
-    }
-
     // Ocultar celdas en cada fila
     for (let i = 0; i < tabla.rows.length; i++) {
         const celda = tabla.rows[i].cells[index];
@@ -340,6 +336,7 @@ let fechaActual = function () {
     return (fechaYHora = fecha + " " + hora);
 };
 
+
 const btnrealizarPedido = document.querySelector("#btnrealizarPedido");
 
 if (btnrealizarPedido) {
@@ -347,7 +344,6 @@ if (btnrealizarPedido) {
         AlertaAceptarCompra();
     });
 }
-
 
 function AlertaAceptarCompra() {
     Swal.fire({
@@ -387,6 +383,8 @@ async function enviarDataApi(idCliente, serie, fecha) {
                 text: "Pedido Enviado Correctamente.",
                 icon: "success"
             });
+            window.location.replace("/home");
+
         }
     }
 }

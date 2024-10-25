@@ -87,14 +87,6 @@ for (const btn of boton) {
     });
 }
 
-// if (btnenviardProducto) {
-//     btnenviardProducto.addEventListener("click", () => {
-
-//     });
-// }
-
-
-
 
 function notificarProceso(valor) {
     Swal.fire({
@@ -190,7 +182,7 @@ $(document).ready(function () {
         scrollY: true,
         scrollX: true,
     });
-})
+});
 
 
 

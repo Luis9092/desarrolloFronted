@@ -1,0 +1,97 @@
+<dialog id="modalCliente">
+  <div class="container">
+    <div class="info-container" id="InfoCont">
+
+      <br />
+
+      <div class="containerProductoform">
+        <div id="btn_cancelarcliente" class="btn_cancelar">
+          <i class="bx bx-x"></i>
+        </div>
+        <h2>Formulario Cliente</h2>
+        <form
+          method="POST"
+          action="/clienteOperaciones"
+          id="formCliente"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" name="txtidcc" id="txtidcc" />
+
+          <div class="row2">
+            <div class="form-group">
+              <label for="nombre">Nombres</label>
+              <input type="text" id="txtnombresc" name="txtnombresc" required />
+            </div>
+
+            <div class="form-group">
+              <label for="telefono">Apellidos</label>
+              <input
+                type="text"
+                id="txtapellidosc"
+                name="txtapellidosc"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="form-group">
+              <label for="direccion">Nit</label>
+              <input name="txtnitc" id="txtnitc" required />
+            </div>
+
+            <div class="form-group">
+              <label for="direccion">Correo</label>
+              <input
+                type="text"
+                name="txtCorreoc"
+                id="txtCorreoc"
+                disabled
+                required
+              />
+            </div>
+          </div>
+          <div class="row2">
+            <div class="form-group">
+              <label for="direccion">Direccion</label>
+              <input name="txtdireccionc" id="txtdireccionc" required />
+            </div>
+
+            <div class="form-group">
+              <label for="direccion">Fecha Creacion</label>
+              <input
+                type="text"
+                name="txtfechac"
+                id="txtfechac"
+                disabled
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-groupbtn">
+            <button
+              type="button"
+              class="btn"
+              name="accionCliente"
+              value="eliminar"
+              id="btnEliminarCliente"
+            >
+              Eliminar
+            </button>
+
+            <button
+              type="button"
+              class="btn"
+              name="accionCliente"
+              value="actualizar"
+              id="btnActualizarCliente"
+            >
+              Actualizar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</dialog>

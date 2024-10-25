@@ -66,7 +66,7 @@ var swiper = new Swiper(".swiper_inicio", {
         delay: 4500,
         disableOnInteraction: false,
     },
-  
+
 });
 
 const btnDepartamentos = document.getElementById('btn-departamentos'),
@@ -169,3 +169,18 @@ window.onload = () => {
     }
     // fadeOut();
 };
+
+
+let btndoce = document.querySelectorAll("#btndoce");
+
+
+for (const element of btndoce) {
+    element.addEventListener("click", (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: "Autenticarse",
+            text: "Por favor inciar sesion",
+            icon: "info"
+        });
+    });
+}

@@ -1,0 +1,136 @@
+<dialog id="modalVerGestionUser">
+  <div class="container">
+    <div class="info-container" id="InfoCont">
+      <br />
+
+      <div class="containerProductoform">
+        <div id="btn_cancelargestion" class="btn_cancelar">
+          <i class="bx bx-x"></i>
+        </div>
+        <h2>Gestion Pedido</h2>
+        <form
+          method="POST"
+          action="/productosOperaciones"
+          id="formProducto"
+          enctype="multipart/form-data"
+        >
+          <input type="hidden" id="idventaf" name="idventaf" />
+          <div class="row2">
+            <div class="form-group">
+              <label for="nombre">Nombre Cliente</label>
+              <input
+                type="text"
+                id="txtnombreClientef"
+                name="txtnombreClientef"
+                required
+                disabled
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="">Direccion</label>
+              <input
+                type="text"
+                id="txtdireccionf"
+                name="txtdireccionf"
+                required
+                disabled
+              />
+            </div>
+          </div>
+
+          <div class="row2">
+            <div class="form-group">
+              <label for="">Estado</label>
+              <input
+                type="text"
+                id="txtestadof"
+                name="txtestadof"
+                required
+                disabled
+              />
+            </div>
+            <div class="form-group">
+              <label for="">Fecha</label>
+              <input
+                type="text"
+                id="txtfechaf"
+                name="txtfechaf"
+                required
+                disabled
+              />
+            </div>
+          </div>
+
+          <div class="tablePrincipal divtablecarrito">
+            <table id="tableverdet" class="display row-border">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Producto</th>
+                  <th>Descripcion</th>
+                  <th>Precio</th>
+                  <th>Cantidad</th>
+                  <th>Sub-total</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+
+            <div
+              class="divtotalf"
+              style="
+                width: 100%;
+                margin: 10px 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+              "
+            >
+              <label for="total">Total:</label>
+              <input
+                style="border: 1px solid gray; border-radius: 4px; padding: 6px"
+                type="text"
+                id="txttotalff"
+                name="txttotalff"
+                disabled
+              />
+            </div>
+          </div>
+
+          <div class="form-groupbtn">
+            <button
+              type="button"
+              class="btn"
+              name="btnproductoenviado"
+              value="Enviado"
+              id="btnproductoenviado"
+            >
+              Producto Enviado
+            </button>
+
+            <button
+              type="button"
+              class="btn"
+              name="btnProductoEntregado"
+              value="Entregado"
+              id="btnProductoEntregado"
+            >
+              Producto Entregado
+            </button>
+
+            <button
+              type="button"
+              class="btn"
+              name="btnsalirf"
+              value="agregar"
+              id="btnsalirf"
+            >
+              Salir
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</dialog>

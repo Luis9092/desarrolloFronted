@@ -33,7 +33,12 @@
           id="formProducto"
           enctype="multipart/form-data"
         >
-        <input type="hidden" id="iduser" name="iduser" value="{{session['id']}}">
+          <input
+            type="hidden"
+            id="iduser"
+            name="iduser"
+            value="{{session['id']}}"
+          />
           <div class="row2">
             <div class="form-group">
               <label for="nombre">Nombre Cliente</label>
@@ -92,7 +97,7 @@
                   <th>Precio</th>
                   <th>Cantidad</th>
                   <th>Subtotal</th>
-                  <th>Imagen</th>
+                  <th style="display: none">Imagen</th>
                 </tr>
               </thead>
               <tbody></tbody>

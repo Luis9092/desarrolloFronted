@@ -751,6 +751,7 @@ table.dataTable thead th.sorting:after {
   font-weight: bold;
   background-color: var(--primary-color);
 }
+
 textarea,
 select,
 input {
